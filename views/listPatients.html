@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <h1>Medical Clinic</h1>
+
+<head>
+    <title>List of Patients</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <a href = "/">Home</a>
+    <a href = "/newDoctor">New Doctor</a>
+    <a href = "/listDoctors">List Doctors</a>
+    <a href = "/newPatient">New Patient</a>
+    <a href = "/listPatients">List Patients</a>
+    <a href = "/updateDoctor">Update Doctor</a>
+    <a href = "/deletePatient">Delete Patient</a>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>All Patients</h2>
+        <p>This table contains a list of all patients at the medical clinic</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Date Visit</th>
+                    <th>Doctor First Name</th>
+                    <th>Doctor Last Name</th>
+                    <th>Case Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for ( let i =0; i< patDb.length;i++){ %>
+                <tr>
+                    <td><%= patDb[i].fullname%></td>
+                    <td><%= patDb[i].age%></td>
+                    <td><%= patDb[i].visitDate%></td>
+                    <td><%= patDb[i].doctor.name.firstName%></td>
+                    <td><%= patDb[i].doctor.name.lastName%></td>
+                    <td><%= patDb[i].caseDesc%></td>
+                </tr>
+                <% }%>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

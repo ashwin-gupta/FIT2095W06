@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<h1>Medical Clinic</h1>
+
+<head>
+    <title>List of Doctors</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <a href="/">Home</a>
+    <a href="/newDoctor">New Doctor</a>
+    <a href="/listDoctors">List Doctors</a>
+    <a href="/newPatient">New Patient</a>
+    <a href="/listPatients">List Patients</a>
+    <a href="/updateDoctor">Update Doctor</a>
+    <a href="/deletePatient">Delete Patient</a>
+
+    <div class="container">
+
+        <h2>All Doctors</h2>
+        <p>This table contains a list of all doctors at the medical clinic</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DoB</th>
+                    <th>Address</th>
+                    <th>Patient Count</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for ( let i =0; i< docDb.length;i++){ %>
+                <tr>
+                    <td><%= docDb[i].name.firstName%></td>
+                    <td><%= docDb[i].name.lastName%></td>
+                    <td><%= docDb[i].birthDate%></td>
+                    <td><%= docDb[i].address.unit%>
+                        <%= docDb[i].address.street + ","%>
+                        <%= docDb[i].address.suburb + ","%>
+                        <%= docDb[i].address.state%></td>
+                    <td><%= docDb[i].numPatients%></td>
+                    <td><%= docDb[i].id%></td>
+                </tr>
+                <% }%>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

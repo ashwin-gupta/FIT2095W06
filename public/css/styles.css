@@ -1,0 +1,50 @@
+body {
+    background-color: seashell;
+    background-image: url("booksBG.jpg");
+    background-repeat: no-repeat;
+    background-size: 1920px 1080px;
+    font-family: monospace;
+}
+p {
+    font-family: monospace;
+}
+
+h1 {
+    font-family:monospace;
+    color: #2E5077;
+}
+a:link,
+a:visited {
+    background-color: #2E5077;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: monospace;
+}
+
+a:hover,
+a:active {
+    background-color: #FFA630;
+}
+button {
+    display: inline-block;
+    padding: 16px 16px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #2E5077;
+    border: none;
+    border-radius: 15px;
+  }
+  
+  button:hover {background-color: #FFA630}
+  
+  button:active {
+    background-color: #2E5077;
+    transform: translateY(4px);
+  }

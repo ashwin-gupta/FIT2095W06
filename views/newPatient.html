@@ -1,0 +1,29 @@
+<html>
+
+<h1>New Patient</h1>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<a href = "/">Home</a>
+<a href = "/newDoctor">New Doctor</a>
+<a href = "/listDoctors">List Doctors</a>
+<a href = "/newPatient">New Patient</a>
+<a href = "/listPatients">List Patients</a>
+<a href = "/updateDoctor">Update Doctor</a>
+<a href = "/deletePatient">Delete Patient</a>
+
+<body>
+    <form method="POST" action="/addNewPatient"><br>
+        <h3>Doctor Details</h3>
+        Doctor ID<input type="text" name="docID" /><br>
+        <h3>Patient Details</h3>
+        Full Name<input type="text" name="fullname" /><br>
+        Age<input type="number" name="age" /><br>
+        Date of Visit<input type="date" name="date" /><br>
+        Case Description<input type="text" name="desc" /><br>
+        <button type="submit">Add Patient</button><br>
+    </form>
+</body>
+
+</html>
