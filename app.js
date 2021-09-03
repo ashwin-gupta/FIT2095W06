@@ -4,7 +4,9 @@ const app = express();
 const moment = require('moment');
 
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/W06Lab';
+
+console.log("DB URL: " + process.argv[2]);
+const url = 'mongodb://' +process.argv[2] +':27017/W06Lab';
 
 const Doctor = require('./models/doctors');
 const Patient = require('./models/patients');
@@ -72,7 +74,7 @@ app.post("/addNewDoctor", (req, res) => {
             console.log(err);
             return;
         }
-        
+
         renderDoctors(res);
     });
 
@@ -91,7 +93,7 @@ app.post("/addNewPatient", (req, res) => {
         caseDesc: newPatient.desc
     });
 
-    if(newPatient.date) {
+    if (newPatient.date) {
         aPatient.visitDate = newPatient.date
     }
 
@@ -126,6 +128,10 @@ app.post("/addNewPatient", (req, res) => {
 
 });
 
+app.get("/deleteDoctor", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "deleteDoctor.html"));
+})
+
 app.get("/listPatients", (req, res) => {
     renderPatients(res);
 });
@@ -156,10 +162,10 @@ app.post("/deletePatientAction", (req, res) => {
 
         console.log(doc);
         renderPatients(res);
-        
+
     });
 
-    
+
 });
 
 app.post("/updateDocPatients", (req, res) => {
@@ -182,7 +188,41 @@ app.post("/updateDocPatients", (req, res) => {
 
         renderDoctors(res);
     });
-})
+});
+
+app.post("/deleteDoctorAction", (req, res) => {
+    let docId = req.body.docID;
+
+    Doctor.deleteOne({
+        '_id': docId
+    }, function (err, doc) {
+
+        if (err) {
+            console.log(err);
+            res.sendFile(path.join(__dirname, "views", "invalid.html"));
+            return;
+        }
+
+
+        console.log(doc);
+
+        Patient.deleteMany({
+            'doctor': docId
+        }, function (err, doc) {
+            if (err) {
+                console.log(err);
+                res.sendFile(path.join(__dirname, "views", "invalid.html"));
+                return;
+            }
+
+            console.log(doc);
+
+            renderPatients(res);
+        });
+
+
+    });
+});
 
 
 
